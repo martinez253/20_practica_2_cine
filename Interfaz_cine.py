@@ -10,7 +10,7 @@ frame_app.pack()
 pelicula = StringVar()
 hora = StringVar()
 fecha = StringVar()
-id_cartelera = StringVar()
+idioma = StringVar()
 
 def show_data():
     pelicula = entry_sala.get()
@@ -20,18 +20,18 @@ def show_data():
     print(sala)
     print(hora)
     print(fecha)
-    print(id_cartelera)
+    print(idioma)
 
 def crear_sala():
     pelicula = entry_pelicula.get()
     hora = entry_hora.get()
     fecha = entry_fecha.get()
-    idioma = entry_id_cartelera.get()
+    idioma = entry_idioma.get()
     
     DB_CINE = cine_database.MyDatabase()
-    data = (id_cartelera,pelicula, hora, fecha,)
+    data = (pelicula, hora, fecha, idioma)
     print(data)
-    DB_CINE.insert_db( id_cartelera,pelicula, hora, fecha,)
+    DB_CINE.insert_db(pelicula, hora, fecha, idioma)
 
 # Widgets dentro del contender APP
 frame_navbar = Frame(frame_app, width=400, height=100)
@@ -45,7 +45,7 @@ frame_options.grid(row=2, column=0)
 frame_salas = Frame(frame_options, width=350, height=450, bg="#d48df0")
 frame_salas.place(x=25, y=30)
 label_pelicula = Label(frame_salas, 
-              text="PELICULA:",
+              text="Película:",
               font=("Calibri", "22", "bold"),
               fg="white",
               bg="#d48df0")
@@ -53,7 +53,7 @@ label_pelicula.place(x=20, y=60)
 entry_pelicula = Entry(frame_salas, justify=LEFT, width=30, font=("Calibri", "14", "bold"))
 entry_pelicula.place(x=20, y=100)
 label_hora= Label(frame_salas, 
-              text="HORA:",
+              text="Hora:",
               font=("Calibri", "22", "bold"),
               fg="white",
               bg="#d48df0")
@@ -61,21 +61,21 @@ label_hora.place(x=20, y=130)
 entry_hora= Entry(frame_salas, justify=LEFT, width=30, font=("Calibri", "14", "bold"))
 entry_hora.place(x=20, y=170)
 label_fecha = Label(frame_salas, 
-              text="FECHA:",
+              text="Fecha:",
               font=("Calibri", "22", "bold"),
               fg="white",
               bg="#d48df0")
 label_fecha.place(x=20, y=200)
 entry_fecha = Entry(frame_salas, justify=LEFT, width=30, font=("Calibri", "14", "bold"))
 entry_fecha.place(x=20, y=240)
-label_id_cargelera = Label(frame_salas, 
-              text="ID_CARTELERA:",
+label_idioma = Label(frame_salas, 
+              text="Idioma:",
               font=("Calibri", "22", "bold"),
               fg="white",
               bg="#d48df0")
-label_id_cartelera.place(x=20, y=270)
-entry_id_cartelera = Entry(frame_salas, justify=LEFT, width=30, font=("Calibri", "14", "bold"))
-entry_id_cartelera.place(x=20, y=310)
+label_idioma.place(x=20, y=270)
+entry_idioma = Entry(frame_salas, justify=LEFT, width=30, font=("Calibri", "14", "bold"))
+entry_idioma.place(x=20, y=310)
 
 button_crear_sala = Button(frame_salas, text="Crear Sala", font=("Calibri", "14", "bold"), command=crear_sala)
 button_crear_sala.place(x=20, y=370)
